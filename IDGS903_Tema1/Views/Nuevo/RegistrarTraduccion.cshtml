@@ -1,0 +1,88 @@
+﻿@model IDGS903_Tema1.Models.Diccionario
+
+@{
+    ViewBag.Title = "RegistrarTraduccion";
+}
+
+<h2>RegistrarTraduccion</h2>
+
+<style>
+    .table {
+        display: none;
+    }
+
+    .table:target {
+        display: table;
+    }
+</style>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-horizontal">
+                    <h4>Diccionario</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PalabraEsp, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PalabraEsp, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PalabraEsp, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PalabraIng, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PalabraIng, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PalabraIng, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <input type="submit" value="Registrar" class="btn btn-primary" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <a class="btn btn-danger" href="/Nuevo/Traductor">Traductor</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="col-lg-6">
+                    <a href="#mostrar-tabla" class="btn btn-success boton">Mostrar tabla</a>
+                </div>
+                <br />
+                <table id="mostrar-tabla" class="table table-dark">
+                    <thead class="justify-content-center">
+                        <tr>
+                            <th scope="col">Español</th>
+                            <th scope="col">Inglés</th>
+                        </tr>
+                    </thead>
+                    <tbody class="justify-content-center">
+                        @foreach (string item in ViewBag.Palabras)
+                        {
+                            <tr>
+                                @foreach (string datos in item.Split(','))
+                                {
+                                    <td>@datos</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+

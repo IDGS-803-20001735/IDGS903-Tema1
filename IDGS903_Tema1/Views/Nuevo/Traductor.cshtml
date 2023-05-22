@@ -1,0 +1,45 @@
+﻿@model IDGS903_Tema1.Models.Traductor
+
+@{
+    ViewBag.Title = "Traductor";
+}
+
+<h2>Traductor</h2>
+
+@using (Html.BeginForm("Traductor", "Nuevo", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Palabra, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Palabra, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Palabra, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <input id="esp" type="radio" name="Lenguaje" value="Español" /><label for="esp">ESPAÑOL</label>
+                <br />
+                <br />
+                <input id="ing" type="radio" name="Lenguaje" value="Ingles" /><label for="ing">INGLES</label>
+                <br />
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Traducir" class="btn btn-dark" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="text-danger">Traducción: @ViewBag.Traduccion</h2>
+            </div>
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,13 @@
+perro,dog
+rojo,red
+amarillo,yellow
+pez,fish
+verde,green
+azul,blue
+cerdo,pig
+león,lyon
+obeja,cheap
+zorro,fox
+globo,balloon
+manzana,apple
+ventana,window
