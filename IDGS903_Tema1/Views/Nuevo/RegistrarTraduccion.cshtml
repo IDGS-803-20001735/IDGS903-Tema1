@@ -9,6 +9,7 @@
 <style>
     .table {
         display: none;
+        text-align: center;
     }
 
     .table:target {
@@ -24,7 +25,6 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-horizontal">
-                    <h4>Diccionario</h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
@@ -47,10 +47,10 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-2">
-                                    <input type="submit" value="Registrar" class="btn btn-primary" />
+                                    <input type="submit" value="GUARDAR" class="btn btn-outline-primary" />
                                 </div>
                                 <div class="col-lg-2">
-                                    <a class="btn btn-danger" href="/Nuevo/Traductor">Traductor</a>
+                                    <a class="btn btn-outline-secondary" href="/Nuevo/Traductor">TRADUCTOR</a>
                                 </div>
                             </div>
                         </div>
@@ -59,10 +59,10 @@
             </div>
             <div class="col-lg-6">
                 <div class="col-lg-6">
-                    <a href="#mostrar-tabla" class="btn btn-success boton">Mostrar tabla</a>
+                    <a href="#mostrar-tabla" class="btn btn-outline-success boton">MOSTRAR DICCIONARIO</a>
                 </div>
                 <br />
-                <table id="mostrar-tabla" class="table table-dark">
+                <table id="mostrar-tabla" class="table table-bordered">
                     <thead class="justify-content-center">
                         <tr>
                             <th scope="col">Español</th>

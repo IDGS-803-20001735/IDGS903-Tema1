@@ -4,10 +4,12 @@ using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security.AntiXss;
 using System.Web.Services.Description;
+using System.Web.UI.WebControls;
 
 namespace IDGS903_Tema1.Controllers
 {
@@ -84,41 +86,58 @@ namespace IDGS903_Tema1.Controllers
 
         public ActionResult Traductor(string Palabra, string Lenguaje)
         {
-            var Traduccion = "";
             var dic = new DatosDiccionario();
             var palabras = dic.LeerDiccionario();
-
-            bool TraduccionEncontrada = false;
+            var traduccion = "";
 
             foreach (string item in palabras)
             {
                 string[] tupla = item.Split(',');
 
-                if (Lenguaje == "Ingles")
+                switch (Lenguaje)
                 {
-                    if (Palabra.ToLower() == tupla[0])
-                    {
-                        Traduccion = tupla[1];
-                        TraduccionEncontrada = true;
-                    }
-                } else if (Lenguaje == "Español")
-                {
-                    if (Palabra.ToLower() == tupla[1])
-                    {
-                        Traduccion = tupla[0];
-                        TraduccionEncontrada = true;
-                    }
+                    case "ingles":
+                        if (Palabra.ToLower() == tupla[0])
+                        {
+                            traduccion = tupla[1];
+                        }
+                    break;
+                    case "español":
+                        if (Palabra.ToLower() == tupla[1])
+                        {
+                            traduccion = tupla[0];
+                        }
+                    break;
                 }
+            }
 
-                if (TraduccionEncontrada == false)
-                {
-                    Traduccion = "No hay traducción para: " + Palabra;
-                }
-            }  
-                
-                
-            ViewBag.Traduccion = Traduccion;
+            if (traduccion == "")
+            {
+                traduccion = "No se encontro traducción";
+            }
+
+            ViewBag.Traduccion = traduccion;
+
             return View();
+        }
+
+        public ActionResult RegistrarDistancia(Puntos puntos)
+        {
+            puntos.CalcularDistancia();
+            puntos.DeterminarTriangulo();
+
+            var model = new Puntos();
+
+            model.DistanciaAB = puntos.DistanciaAB;
+            model.DistanciaAC = puntos.DistanciaAC;
+            model.DistanciaBC = puntos.DistanciaBC;
+
+            model.TipoTriangulo = puntos.TipoTriangulo;
+
+            model.AreaTriangulo = puntos.AreaTriangulo;
+            model.PerimetroTriangulo = puntos.PerimetroTriangulo;
+
+            return View(model);
         }
 
     }

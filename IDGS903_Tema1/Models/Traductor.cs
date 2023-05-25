@@ -10,6 +10,6 @@ namespace IDGS903_Tema1.Models
     public class Traductor
     {
         public string Palabra { get; set; }
-        public string Traduccion { get; set; }
+        public string Lenguaje { get; set; }
     }
 }

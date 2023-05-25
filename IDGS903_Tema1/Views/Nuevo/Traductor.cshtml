@@ -6,7 +6,7 @@
 
 <h2>Traductor</h2>
 
-@using (Html.BeginForm("Traductor", "Nuevo", FormMethod.Post)) 
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
@@ -23,21 +23,36 @@
                         @Html.ValidationMessageFor(model => model.Palabra, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <br />
-                <input id="esp" type="radio" name="Lenguaje" value="Español" /><label for="esp">ESPAÑOL</label>
-                <br />
-                <br />
-                <input id="ing" type="radio" name="Lenguaje" value="Ingles" /><label for="ing">INGLES</label>
-                <br />
-                <br />
+
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Traducir" class="btn btn-dark" />
+                    @Html.LabelFor(model => model.Lenguaje, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(model => model.Lenguaje, "ingles", new { @class = "form-control" }) Inglés
+                        </label>
+                        <br /><br />
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(model => model.Lenguaje, "español", new { @class = "form-control" }) Español
+                        </label>
+                        @Html.ValidationMessageFor(model => model.Lenguaje, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br /><br />
+                <div class="form-group">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <input type="submit" value="TRADUCIR" class="btn btn-outline-dark" />
+                            </div>
+                            <div class="col-lg-2">
+                                <a class="btn btn-outline-danger" href="/Nuevo/RegistrarTraduccion">REGRESAR</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <h2 class="text-danger">Traducción: @ViewBag.Traduccion</h2>
+            <div class="col-lg-6 align-content-center">
+                <h2 class="text-danger">@ViewBag.Traduccion</h2>
             </div>
         </div>
     </div>

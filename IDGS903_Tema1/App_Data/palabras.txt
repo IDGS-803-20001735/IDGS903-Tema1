@@ -11,3 +11,7 @@ zorro,fox
 globo,balloon
 manzana,apple
 ventana,window
+puerta,door
+negro,black
+libro,book
+pelota,ball

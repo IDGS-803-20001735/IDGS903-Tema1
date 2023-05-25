@@ -129,6 +129,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Alumnos.cs" />
+    <Compile Include="Models\Puntos.cs" />
     <Compile Include="Models\Diccionario.cs" />
     <Compile Include="Models\Distancia.cs" />
     <Compile Include="Models\Maestros.cs" />
@@ -213,6 +214,7 @@
     <Content Include="Views\Archivos\LeerDatos.cshtml" />
     <Content Include="Views\Nuevo\RegistrarTraduccion.cshtml" />
     <Content Include="Views\Nuevo\Traductor.cshtml" />
+    <Content Include="Views\Nuevo\RegistrarDistancia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
