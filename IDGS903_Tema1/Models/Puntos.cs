@@ -37,8 +37,8 @@ namespace IDGS903_Tema1.Models
                 {
                     this.TipoTriangulo = "Equilatero";
 
-                    double altura = Math.Sqrt(Math.Pow(this.DistanciaBC, 2) - Math.Pow(this.DistanciaAC / 2, 2));
-                    this.AreaTriangulo = Math.Round((this.DistanciaAC * altura) / 2, 2);
+                    double semiPerimetro = (this.DistanciaAB + this.DistanciaAC + this.DistanciaBC) / 2;
+                    this.AreaTriangulo = Math.Round((Math.Sqrt(semiPerimetro * (semiPerimetro - this.DistanciaAB) * (semiPerimetro - this.DistanciaBC) * (semiPerimetro - this.DistanciaAC))), 2);
                     this.PerimetroTriangulo = this.DistanciaAB + this.DistanciaAC + this.DistanciaBC;
 
                 }
@@ -50,8 +50,8 @@ namespace IDGS903_Tema1.Models
                 {
                     this.TipoTriangulo = "Isósceles";
 
-                    double altura = Math.Sqrt(Math.Pow(this.DistanciaAC, 2) - (Math.Pow(this.DistanciaBC, 2) / 4));
-                    this.AreaTriangulo = Math.Round((this.DistanciaBC * altura) / 2, 2);
+                    double semiPerimetro = (this.DistanciaAB + this.DistanciaAC + this.DistanciaBC) / 2;
+                    this.AreaTriangulo = Math.Round((Math.Sqrt(semiPerimetro * (semiPerimetro - this.DistanciaAB) * (semiPerimetro - this.DistanciaBC) * (semiPerimetro - this.DistanciaAC))), 2);
                     this.PerimetroTriangulo = this.DistanciaAB + this.DistanciaAC + this.DistanciaBC;
 
                 }
@@ -66,7 +66,7 @@ namespace IDGS903_Tema1.Models
             }
             else
             {
-                this.TipoTriangulo = "No es un triangulo";
+                this.TipoTriangulo = "Es una linea recta";
             }
         }
     }
